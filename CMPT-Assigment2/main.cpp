@@ -358,6 +358,93 @@ bool IsJump(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsInBo
 // TOBEIMPLEMENTED: Ryan
 bool MakeMove(int CMCheckersBoard[MAX_ARRAY_SIZE][MAX_ARRAY_SIZE], int numRowsInBoard, int player, int fromSquareNum, int toSquareNum, bool & jumped)
 {
+	//Notes
+	//Convert square number to array location
+	//Define variables for dX and dY
+	//Check if piece moves diagonally 1 or 2 spaces (dX and dY = 1 or 2)
+	//If move distance more than 2 diagonal
+	//		error message and return false
+	//If move disance 2 diagonal but no enemy piece in between
+	//		error message and return false
+	//If soldier or mule moves the wrong way
+	//		error message and return false
+	//Print only one error message for a single move
+	//Make the move, taking out any enemies in between, change values in board array
+	//If piece at end of board, change to king
+	//If mule != king, return true
+	//If mule = king
+	//		your mule = king, you lose
+	//		enemy mule = king, you win
+	//Print victory or defeat message
+	//Terminate game using user input
+
+	int xLocPrev = 0;
+	int xLocPost = 0;
+	int yLocPrev = 0;
+	int yLocPost = 0;
+	int xDistance = 0;
+	int yDistance = 0;
+
+	for (int i = 0; i < numRowsInBoard; i++)
+	{
+		for (int j = 0; j < numRowsInBoard; j++)
+		{
+			if (CMCheckersBoard[i][j] = fromSquareNum)
+			{
+				yLocPrev = i;
+				xLocPrev = j;
+				break;
+			}
+		}
+	}
+
+	for (int i = 0; i < numRowsInBoard; i++)
+	{
+		for (int j = 0; j < numRowsInBoard; j++)
+		{
+			if (CMCheckersBoard[i][j] = toSquareNum)
+			{
+				yLocPost = i;
+				xLocPost = j;
+				break;
+			}
+		}
+	}
+
+	xDistance = abs(xLocPost - xLocPrev);
+	yDistance = abs(yLocPost - yLocPrev);
+
+	if (xDistance == 1 && yDistance == 1)
+	{
+		//may need return here
+	}
+	else if (xDistance > 2 || yDistance > 2)
+	{
+		cerr << "Error; illegal move";
+	}
+	else if (xDistance == 2 && yDistance == 2)
+	{
+		if (CMCheckersBoard[yLocPost + 1][xLocPost + 1] != 'WS')
+		{
+			if (CMCheckersBoard[yLocPost + 1][xLocPost + 1] != 'WM')
+			{
+				if (CMCheckersBoard[yLocPost + 1][xLocPost + 1] != 'WK')
+				{
+
+				}
+			}
+		}
+		if (CMCheckersBoard[yLocPost + 1][xLocPost + 1] != 'RS')
+		{
+			if (CMCheckersBoard[yLocPost + 1][xLocPost + 1] != 'RM')
+			{
+				if (CMCheckersBoard[yLocPost + 1][xLocPost + 1] != 'RK')
+				{
+
+				}
+			}
+		}
+	}
 	return false;
 }
 
